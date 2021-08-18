@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import mysql.connector
 from mysql.connector import Error
-import pandas as pd
 config = pd.read_json('config.json', typ = 'series')
 
 
@@ -28,7 +27,6 @@ def data():
                 for i in range(len(df)):
                     row = df.iloc[i]
                     cursor.execute("INSERT INTO `content`(`name`, `videoLink`, `subdomain`, `createdAt`, `lastUpdatedOn`) VALUES (%s,%s,%s,%s,%s)", (row.name, row.videoLink, row.subdomain, row.createdAt, row.lastUpdatedOn))
-                    print("row inserted at ", i)
                 conn.commit()
                 cursor.close()
                 conn.close()
